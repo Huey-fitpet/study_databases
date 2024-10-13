@@ -18,6 +18,19 @@
  compare_deposit_sanghoonlee.PNG
  
  |-SQLs
+ car_company_NN
+ notice
  study_car_company_NN.sql
+ 
+ |---car_company_NN
+ create_tables.sql
+ drop_tables.sql
+ insert_recode.sql
+ 
+ |---notice
+ create_tables_DDL.sql
+ delete_recode_DML.sql
+ drop_tables_DDL.sql
+ insert_into_recode_DML.sql
 
 ```
