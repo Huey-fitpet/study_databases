@@ -1,5 +1,5 @@
 ## Directory Structure
-Updated on Sun Oct 13 06:30:26 UTC 2024
+Updated on Sun Oct 13 06:31:46 UTC 2024
 
 ```
 .:
@@ -15,6 +15,7 @@ compare_deposit_sanghoonlee.PNG
 
 ./SQLs:
 car_company_NN
+new_update_test.txt
 notice
 study_car_company_NN.sql
 update_test.txt
