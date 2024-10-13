@@ -1,0 +1,30 @@
+name: Update README
+
+on:
+  push:
+    branches:
+      - main  # 또는 원하는 브랜치 이름
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update README
+        run: |
+          echo "Updated on $(date)" >> README.md  # README 파일에 현재 날짜 추가
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "your-email@example.com"
+          git config --local user.name "Your Name"
+          git add README.md
+          git commit -m "Update README on push" || echo "No changes to commit"
+
+      - name: Push changes
+        run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
