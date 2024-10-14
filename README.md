@@ -1,11 +1,12 @@
 ## Directory Structure
-Updated on Mon Oct 14 02:38:20 UTC 2024
+Updated on Mon Oct 14 08:12:22 UTC 2024
 
 ```
 .:
 ERDs
 README.md
 SQLs
+codes
 
 ./ERDs:
 02.Car_Company_Options.png
@@ -32,4 +33,9 @@ drop_tables_DDL.sql
 insert_into_recode_DML.sql
 select_DDL.sql
 update_recode_DML.sql
+
+./codes:
+creat_table_finance_paper.sql
+drop_table_finance_paper.sql
+finance_papers_withMySQL.py
 ```
