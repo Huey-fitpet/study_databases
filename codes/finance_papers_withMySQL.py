@@ -124,7 +124,7 @@ def insert_database_questions(connect, questions):
         #cursor.execute(sql, ('Q_'+str(num), quest['question'], quest['answer']))
         cursor.execute(sql, (f'Q_{num:02}', quest['question'], quest['answer']))
 
-    conn.commit()
+    connect.commit()
     return 
 
 def insert_database_options(connect, questions):
@@ -138,7 +138,7 @@ def insert_database_options(connect, questions):
     # q,1,2,3,4,1
     # o,1,1,1,1,2
     # d = 4 = (o-1)*4
-    conn.commit()
+    connect.commit()
     return 
 
 # commit 까지 하려면 connect 필요 
@@ -146,7 +146,7 @@ def insert_database_respondents(connect, user_name, corr_count, last_num):
     cursor = connect.cursor()
     sql = "INSERT INTO RESPONDENTS (PK_A, RESPONDENT, CORR_COUNT) VALUES (%s, %s, %s)"
     cursor.execute(sql, (f'A_{last_num:02}', user_name, corr_count))
-    conn.commit()
+    connect.commit()
     return 
 
 def insert_database_answers(connect, user_answer_list, last_num):
@@ -156,7 +156,7 @@ def insert_database_answers(connect, user_answer_list, last_num):
         temp_num = (last_num-1)*5 + num # ((num_o-1)*4+num_q)
         cursor.execute(sql, (f'B_{temp_num:02}', f'A_{last_num:02}', quest))
 
-    conn.commit()
+    connect.commit()
     return 
 
 def read_database(cursor, table_name):
@@ -190,58 +190,63 @@ def input_user_answer(questions, options):
     print("**퀴즈 완료! 당신의 총 점수는: "+str(correct_num)+"/"+str(len(questions))+"**")
     return correct_num, return_input
 
-# 데이터베이스 연결 설정
-conn = pymysql.connect(
-    host='python_mysql_mysql',  # 컨테이너 이름 또는 IP
-    user='cocolabhub',
-    password='cocolabhub',
-    db='python_mysql',  # 데이터베이스 이름
-    charset='utf8mb4', 
-    cursorclass=pymysql.cursors.DictCursor  # DictCursor로 설정    
-)
+def main():
+    # 데이터베이스 연결 설정
+    conn = pymysql.connect(
+        host='python_mysql_mysql',  # 컨테이너 이름 또는 IP
+        user='cocolabhub',
+        password='cocolabhub',
+        db='python_mysql',  # 데이터베이스 이름
+        charset='utf8mb4', 
+        cursorclass=pymysql.cursors.DictCursor  # DictCursor로 설정    
+    )
 
-try:
-    with conn.cursor() as cursor:
-        # insert 수행
-        # insert_database_questions(conn, questions)
-        # insert_database_options(conn, questions)
-        # 이미 수행 함
+    try:
+        with conn.cursor() as cursor:
+            # insert 수행
+            # insert_database_questions(conn, questions)
+            # insert_database_options(conn, questions)
+            # 이미 수행 함
 
-        # QUESTIONS
-        # Read
-        user_name = input('이름을 입력 하시오 : ')
+            # QUESTIONS
+            # Read
+            user_name = input('이름을 입력 하시오 : ')
 
-        data_quest = read_database(cursor, "QUESTIONS")
-        data_opt = read_database(cursor, "OPTIONS")
-        user_corr_num, user_input = input_user_answer(data_quest, data_opt)
-        
-        # 결과 저장 
-        # 결과 저장전 가장 마지막 PK 확인
-        data_user = read_database(cursor, "RESPONDENTS")
-        insert_database_respondents(conn, user_name, user_corr_num, len(data_user)+1)
-        insert_database_answers(conn, user_input, len(data_user)+1)
+            data_quest = read_database(cursor, "QUESTIONS")
+            data_opt = read_database(cursor, "OPTIONS")
+            user_corr_num, user_input = input_user_answer(data_quest, data_opt)
+            
+            # 결과 저장 
+            # 결과 저장전 가장 마지막 PK 확인
+            data_user = read_database(cursor, "RESPONDENTS")
+            insert_database_respondents(conn, user_name, user_corr_num, len(data_user)+1)
+            insert_database_answers(conn, user_input, len(data_user)+1)
 
-        data_total = read_database(cursor, "RESPONDENTS")
-        data_ans = read_database(cursor, "ANSWERS")
+            data_total = read_database(cursor, "RESPONDENTS")
+            data_ans = read_database(cursor, "ANSWERS")
 
-        print('**********참여자점수**********')
-        for num, q in enumerate(data_total, start=1): 
-            print("이름:\t"+q['RESPONDENT']+"\t점수:\t"+ q['CORR_COUNT']+"\t응답:\t", end='')
-            for num, o in enumerate(data_ans, start=1): 
-                if q['PK_A']==o['FK_A']:
-                    print(o['ANSWER'],end=' ')
+            print('**********참여자점수**********')
+            for num, q in enumerate(data_total, start=1): 
+                print("이름:\t"+q['RESPONDENT']+"\t점수:\t"+ q['CORR_COUNT']+"\t응답:\t", end='')
+                for num, o in enumerate(data_ans, start=1): 
+                    if q['PK_A']==o['FK_A']:
+                        print(o['ANSWER'],end=' ')
+                print()
             print()
-        print()
 
-        # # Update
-        # sql = "UPDATE TableName SET column1=%s WHERE pk_id=%s"
-        # cursor.execute(sql, ('newvalue1', 1))
-        # conn.commit()
+            # # Update
+            # sql = "UPDATE TableName SET column1=%s WHERE pk_id=%s"
+            # cursor.execute(sql, ('newvalue1', 1))
+            # conn.commit()
 
-        # # Delete
-        # sql = "DELETE FROM TableName WHERE pk_id=%s"
-        # cursor.execute(sql, (1,))
-        # conn.commit()
+            # # Delete
+            # sql = "DELETE FROM TableName WHERE pk_id=%s"
+            # cursor.execute(sql, (1,))
+            # conn.commit()
 
-finally:
-    conn.close()
+    finally:
+        conn.close()
+
+
+if __name__ == "__main__":
+    main()
