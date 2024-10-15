@@ -1,5 +1,5 @@
 ## Directory Structure
-Updated on Mon Oct 14 08:52:26 UTC 2024
+Updated on Tue Oct 15 05:34:14 UTC 2024
 
 ```
 .:
@@ -38,4 +38,5 @@ update_recode_DML.sql
 creat_table_finance_paper.sql
 drop_table_finance_paper.sql
 finance_papers_withMySQL.py
+selectwherenotcountry.sql
 ```
