@@ -1,5 +1,5 @@
 ## Directory Structure
-Updated on Tue Oct 15 05:34:14 UTC 2024
+Updated on Tue Oct 15 05:35:45 UTC 2024
 
 ```
 .:
@@ -18,6 +18,7 @@ compare_deposit_sanghoonlee.PNG
 car_company_NN
 new_update_test.txt
 notice
+selectwherenotcountry.sql
 study_car_company_NN.sql
 update_test.txt
 
@@ -38,5 +39,4 @@ update_recode_DML.sql
 creat_table_finance_paper.sql
 drop_table_finance_paper.sql
 finance_papers_withMySQL.py
-selectwherenotcountry.sql
 ```
