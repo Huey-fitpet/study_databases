@@ -11,3 +11,10 @@ FROM Orders
 GROUP BY EmployeeID
 HAVING EmployeeID IN(7,9)
 ;
+
+SELECT ORDERS_TB.EmployeeID, COUNT(ORDERS_TB.OrderID) AS ORD_CNT
+FROM  ( SELECT *
+		FROM Orders
+		WHERE EmployeeID = 7 OR EmployeeID = 9) AS ORDERS_TB
+GROUP BY ORDERS_TB.EmployeeID
+;
