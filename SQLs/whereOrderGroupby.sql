@@ -1,4 +1,5 @@
 /*
+조건 : EmployeeID가 7, 9 직원에 주문 갯수를 각각 표시
 Number of Records: 2
 EmployeeID	Order_Count
     7 	        14 
