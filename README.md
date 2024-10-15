@@ -1,5 +1,5 @@
 ## Directory Structure
-Updated on Tue Oct 15 05:57:57 UTC 2024
+Updated on Tue Oct 15 07:13:37 UTC 2024
 
 ```
 .:
@@ -22,6 +22,7 @@ selectwhereNotCountry.sql
 selectwhereRangeAndEqual.sql
 study_car_company_NN.sql
 update_test.txt
+whereOrderGroupby.sql
 
 ./SQLs/car_company_NN:
 create_tables.sql
