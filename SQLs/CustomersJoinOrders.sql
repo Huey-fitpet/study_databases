@@ -6,7 +6,7 @@
 
 
 Number of Records: 89
-CustomerName	                    Customer_Count
+CustomerName	                    Order_Count
 Alfreds Futterkiste	                    6
 Ana Trujillo Emparedados y helados	    4
 Antonio Moreno Taquería	                7
@@ -18,7 +18,7 @@ Wolski	                                7
 */
 
 
-SELECT C.CustomerName, COUNT(C.CustomerID) AS Customer_Name 
+SELECT C.CustomerName, Count(O.OrderID) as Order_Count
 FROM Customers as C
 INNER JOIN Orders as O
 ON C.CustomerID = O.CustomerID 
