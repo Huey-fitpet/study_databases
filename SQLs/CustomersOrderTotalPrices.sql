@@ -7,9 +7,9 @@
 
 
 Number of Records: 3
-CustomerID	    CustomerName	                    Country	TOTAL_PRICE
-    5	    Berglunds snabbköp	                    Sweden	28355.75
-    10	    Bottom-Dollar Marketse	                Canada	24429.15
+CustomerID	    CustomerName	                    Country	    TOTAL_PRICE
+    5	    Berglunds snabbköp	                     Sweden	    28355.75
+    10	    Bottom-Dollar Marketse	                Canada	    24429.15
     22	    FISSA Fabrica Inter. Salchichas S.A.	Spain	
 
 */
