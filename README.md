@@ -1,8 +1,9 @@
 ## Directory Structure
-Updated on Wed Oct 16 07:36:58 UTC 2024
+Updated on Wed Oct 16 08:29:48 UTC 2024
 
 ```
 .:
+CategoriesDescWithProducts.sql
 ERDs
 README.md
 SQLs
