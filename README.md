@@ -1,9 +1,8 @@
 ## Directory Structure
-Updated on Wed Oct 16 08:29:48 UTC 2024
+Updated on Wed Oct 16 08:32:55 UTC 2024
 
 ```
 .:
-CategoriesDescWithProducts.sql
 ERDs
 README.md
 SQLs
@@ -16,6 +15,7 @@ codes
 compare_deposit_sanghoonlee.PNG
 
 ./SQLs:
+CategoriesDescWithProducts.sql
 CustomersJoinOrders.sql
 CustomersOrderDetailsInformations.sql
 OrderDetailsFromVirtualTableWhereGroupby.sql
