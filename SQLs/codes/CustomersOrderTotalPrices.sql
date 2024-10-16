@@ -15,17 +15,31 @@ CustomerID	    CustomerName	                    Country	    TOTAL_PRICE
 */
 
 
-SELECT Total.CustomerID, Total.CustomerName, Total.Country, SUM(Total.total) AS TOTAL_PRICE
+SELECT 
+	CustOrdOrdDProd.CustomerID,
+	CustOrdOrdDProd.CustomerName, 
+    CustOrdOrdDProd.Country, 
+    SUM(CustOrdOrdDProd.P_Q_Total) AS TOTAL_PRICE
 FROM (
-SELECT C.CustomerID, C.CustomerName, C.Country, P.Price, OD.Quantity, P.Price * OD.Quantity AS total
-FROM   (SELECT CustomerID, CustomerName, Country 
-		FROM Customers
-		WHERE CustomerID IN (5,10,22)) AS C 
+	SELECT 
+    	C.CustomerID, 
+        C.CustomerName, 
+        C.Country, 
+        P.Price, 
+        OD.Quantity, 
+        P.Price * OD.Quantity AS P_Q_Total
+	FROM (
+    	SELECT 
+        	CustomerID, 
+            CustomerName, 
+            Country 
+        FROM Customers
+		WHERE CustomerID IN (5,10,22) ) AS C 
         LEFT JOIN Orders AS O
         ON C.CustomerID = O.CustomerID 
         LEFT JOIN OrderDetails AS OD 
         ON OD.OrderID = O.OrderID
         LEFT JOIN Products AS P
         ON OD.ProductID = P.ProductID
-        ) AS Total
- GROUP BY Total.CustomerName
+        ) AS CustOrdOrdDProd
+ GROUP BY CustOrdOrdDProd.CustomerName
