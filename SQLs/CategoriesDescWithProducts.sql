@@ -6,13 +6,13 @@
 Number of Records: 8
 CategoryName	Product_Cnt
 Confections	        13
-Seafood	            12
+Seafood	        12
 Beverages	        12
 Condiments	        12
-Dairy Products	    10
-Grains/Cereals	    7
-Meat/Poultry	    6
-Produce	            5
+Dairy Products	 10
+Grains/Cereals	  7
+Meat/Poultry	         6
+Produce	         5
 
 */
 
