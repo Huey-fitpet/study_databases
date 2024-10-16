@@ -1,5 +1,5 @@
 ## Directory Structure
-Updated on Wed Oct 16 09:01:44 UTC 2024
+Updated on Wed Oct 16 23:00:13 UTC 2024
 
 ```
 .:
@@ -15,25 +15,26 @@ codes
 compare_deposit_sanghoonlee.PNG
 
 ./SQLs:
+car_company_NN
+codes
+notice
+
+./SQLs/car_company_NN:
+create_tables.sql
+drop_tables.sql
+insert_recode.sql
+study_car_company_NN.sql
+
+./SQLs/codes:
 CategoriesDescWithProducts.sql
 CustomersJoinOrders.sql
 CustomersOrderDetailsInformations.sql
 CustomersOrderTotalPrices.sql
 OrderDetailsFromVirtualTableWhereGroupby.sql
 OrdersMaxEmployee.sql
-car_company_NN
-new_update_test.txt
-notice
 selectwhereNotCountry.sql
 selectwhereRangeAndEqual.sql
-study_car_company_NN.sql
-update_test.txt
 whereOrderGroupby.sql
-
-./SQLs/car_company_NN:
-create_tables.sql
-drop_tables.sql
-insert_recode.sql
 
 ./SQLs/notice:
 create_tables_DDL.sql
