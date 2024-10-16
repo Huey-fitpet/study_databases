@@ -1,5 +1,5 @@
 ## Directory Structure
-Updated on Wed Oct 16 03:29:09 UTC 2024
+Updated on Wed Oct 16 05:07:07 UTC 2024
 
 ```
 .:
@@ -16,6 +16,7 @@ compare_deposit_sanghoonlee.PNG
 
 ./SQLs:
 CustomersJoinOrders.sql
+CustomersOrderDetailsInformations.sql
 OrderDetailsFromVirtualTableWhereGroupby.sql
 car_company_NN
 new_update_test.txt
