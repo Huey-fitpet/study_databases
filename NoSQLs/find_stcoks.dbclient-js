@@ -52,6 +52,10 @@ db('study_finance_new_shl').collection('stocks').find({}).toArray();
 -- 1. 특정 날짜 범위에서 특정 종목의 주식 데이터 조회
 -- symbol이 "AAPL"이고 date가 "2023-10-02"에서 "2023-10-04" 사이에 해당하는 모든 문서를 조회하세요.
 db('study_finance_new_shl').collection('stocks').find(
+    {"$and" : [{"symbol" : "AAPL"}, {"$and" : [{"date" : {"$gte" : "2023-10-02"}}, {"date" : {"$lte" : "2023-10-04"}}]}]}
+    ).toArray();
+    
+db('study_finance_new_shl').collection('stocks').find(
     {"$and" : [{"symbol" : "AAPL"}, {"date" : {"$gte" : "2023-10-02"}}, {"date" : {"$lte" : "2023-10-04"}}]}
     ).toArray();
 
