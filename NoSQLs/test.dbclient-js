@@ -1,0 +1,53 @@
+-- Active: 1729840429353@@192.168.0.46@27017@youtube_db_sanghoonlee
+
+  
+
+db('study_finance_shl').collection('posts').find({}).limit(100).toArray();
+
+  
+
+db('study_finance_shl').collection('posts').find(
+{ "$or" : [ {"title" : "temp_second"}, {"title" : "temp_fourth"}]}
+).toArray();
+
+  
+  
+
+db('study_finance_shl').collection('posts').find(
+{ "title" : "temp_second", "visitor" : 11}
+).toArray();
+
+  
+  
+
+db('study_finance_shl').collection('posts').find(
+    {"visitor" : {"$gt" : 30}}
+).toArray();
+
+  
+  
+
+// { "title" : "temp_second", "visitor" : "12"} -- 별개의 조건 임
+
+// { "title" : "temp_second"}, {"visitor" : "12"} -- 별개의 조건 임
+
+  
+
+// 12 < visitor < 40
+
+db('study_finance_shl').collection('posts').find(
+
+   {"$and" : [{"visitor" : {"$gte" : 12}}, {"visitor" : {"$lt" : 40}}]}
+
+).toArray();
+
+  
+  
+
+// visitor == 12 or visitor == 35
+
+db('study_finance_shl').collection('posts').find(
+
+   {"visitor" : {"$in" : [12, 36]}}
+
+).toArray();
