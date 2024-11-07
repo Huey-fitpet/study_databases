@@ -46,6 +46,7 @@ db('study_finance_new_shl').collection('stocks').insertMany(
 ]
 )
 
+-- null test insert 
 db('study_finance_new_shl').collection('stocks').insertMany(
 [
   { "symbol": "AAPL", "date": "2023-10-01", "volume": 10000 },
