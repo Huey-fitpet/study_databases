@@ -124,9 +124,13 @@ db('study_finance_new_shl').collection('stocks').find(
 
 -- 10. 값이 없는 데이터 조회 : price 필드가 null인 데이터를 반환
 db('study_finance_new_shl').collection('stocks').find(
-{"price" : ""}).toArray();
+{"price" : { "$exists": false } }).toArray();
+
+db('study_finance_new_shl').collection('stocks').find(
+{"price" : null }).toArray();
+
 
 -- 11. 다중 필드 검색 (OR 조건) : symbol이 "AAPL" 또는 "TSLA"이거나, price가 3000보다 큰 데이터를 검색
 db('study_finance_new_shl').collection('stocks').find(
     {"$or" : [{"$or" : [{"symbol" : "AAPL"}, {"symbol" : "TSLA"}]}, {"$or":[{"price" : {"$gt" : 3000}}]}]}
-    ).toArray();
+    ).sort({"price":1}).toArray();
