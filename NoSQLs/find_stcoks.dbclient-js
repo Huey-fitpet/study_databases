@@ -46,6 +46,10 @@ db('study_finance_new_shl').collection('stocks').insertMany(
 ]
 )
 
+db('study_finance_new_shl').collection('stocks').insertMany(
+[
+  { "symbol": "AAPL", "date": "2023-10-01", "volume": 10000 },
+]);
 
 db('study_finance_new_shl').collection('stocks').find({}).toArray();
 
@@ -54,7 +58,7 @@ db('study_finance_new_shl').collection('stocks').find({}).toArray();
 db('study_finance_new_shl').collection('stocks').find(
     {"$and" : [{"symbol" : "AAPL"}, {"$and" : [{"date" : {"$gte" : "2023-10-02"}}, {"date" : {"$lte" : "2023-10-04"}}]}]}
     ).toArray();
-    
+
 db('study_finance_new_shl').collection('stocks').find(
     {"$and" : [{"symbol" : "AAPL"}, {"date" : {"$gte" : "2023-10-02"}}, {"date" : {"$lte" : "2023-10-04"}}]}
     ).toArray();
@@ -106,4 +110,23 @@ db('study_finance_new_shl').collection('stocks').find(
 -- symbol이 "META" 또는 "NFLX"이며, volume이 5000 이상이거나 price가 650 이상인 주식 데이터를 조회하세요.
 db('study_finance_new_shl').collection('stocks').find(
     {"$and" : [{"$or" : [{"symbol" : "META"}, {"symbol" : "NFLX"}]}, {"$or":[{"volume" : {"$gte" : 5000}}, {"price" : {"$gte" : 650}}]}]}
+    ).toArray();
+
+
+db('study_finance_new_shl').collection('stocks').find(
+{}
+, { "symbol": 0, "date": 0 }
+).sort({"price":-1}).skip(2).limit(4).toArray();
+
+-- projection
+-- .skip(2).limit(4) -- page nation에 쓰임
+
+
+-- 10. 값이 없는 데이터 조회 : price 필드가 null인 데이터를 반환
+db('study_finance_new_shl').collection('stocks').find(
+{"price" : ""}).toArray();
+
+-- 11. 다중 필드 검색 (OR 조건) : symbol이 "AAPL" 또는 "TSLA"이거나, price가 3000보다 큰 데이터를 검색
+db('study_finance_new_shl').collection('stocks').find(
+    {"$or" : [{"$or" : [{"symbol" : "AAPL"}, {"symbol" : "TSLA"}]}, {"$or":[{"price" : {"$gt" : 3000}}]}]}
     ).toArray();
