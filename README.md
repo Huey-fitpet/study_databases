@@ -1,9 +1,10 @@
 ## Directory Structure
-Updated on Fri Nov  8 06:16:26 UTC 2024
+Updated on Mon Nov 11 00:32:18 UTC 2024
 
 ```
 .:
 ERDs
+NoSQLs
 README.md
 SQLs
 codes
@@ -15,10 +16,17 @@ tests_oh
 04.Notices_NN_2.PNG
 compare_deposit_sanghoonlee.PNG
 
+./NoSQLs:
+find_regexp_stcoks.dbclient-js
+find_stocks.dbclient-js
+posts.dbclient-js
+test.dbclient-js
+
 ./SQLs:
 car_company_NN
 codes
 notice
+test.py
 
 ./SQLs/car_company_NN:
 create_tables.sql
