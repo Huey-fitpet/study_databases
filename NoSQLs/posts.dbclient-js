@@ -1,0 +1,66 @@
+
+
+db("study_finance_shl").collection("study_posts").insertMany([
+  {
+    "title": "Post Title 2",
+    "body": "Body of post.",
+    "category": "Event",
+    "likes": 2,
+    "tags": ["news", "events"],
+    "date": "2023-10-01T10:00:00Z"
+  },
+  {
+    "title": "Post Title 3",
+    "body": "Body of post.",
+    "category": "Technology",
+    "likes": 3,
+    "tags": ["news", "events"],
+    "date": "2023-10-02T10:00:00Z"
+  },
+  {
+    "title": "Post Title 4",
+    "body": "Body of post.",
+    "category": "Event",
+    "likes": 4,
+    "tags": ["news", "events"],
+    "date": "2023-10-03T10:00:00Z"
+  }
+])
+
+db("study_finance_shl").collection("study_posts").insertMany([
+  {
+    "title": "Post Title 2",
+    "body": "Body of post.",
+    "category": "Event",
+    "likes": 2,
+    "tags": ["nes", "events"],
+    "date": "2023-10-01T10:00:00Z"
+  }])
+
+db("study_finance_shl").collection("study_posts").find({}).sort({"title":-1}).toArray();
+
+-- title find "Title"
+db("study_finance_shl").collection("study_posts").find({"title" : /Title/ }).toArray();
+
+-- category find "^E"
+db("study_finance_shl").collection("study_posts").find({"category" : /^Ev/ }).toArray();
+
+-- title find "3$"
+db("study_finance_shl").collection("study_posts").find({"title" : /3$/ }).toArray();
+
+-- title find "3 or 4"
+db("study_finance_shl").collection("study_posts").find({"title" : /[34]$/ }).toArray();
+
+
+-- title find all digit
+db("study_finance_shl").collection("study_posts").find({"title" : /\d/ }).toArray();
+db("study_finance_shl").collection("study_posts").find({"title" : /[0-9]/ }).toArray();
+
+
+-- tags find all "news" -- 실제로 json(string)으로 들어가 있어서 가능
+db("study_finance_shl").collection("study_posts").find({"tags" : /news/ }).toArray();
+
+
+-- title find all "post" and not compare  
+db("study_finance_shl").collection("study_posts").find({"title" : /post/i }).toArray();
+
